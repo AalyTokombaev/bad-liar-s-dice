@@ -9,9 +9,6 @@ class Gamestate:
         self.players = list(players)
         self.bet = list()
         #self.turn = 0
-
-    def play(self):
-        pass
         
 
     def round():
@@ -22,9 +19,7 @@ class Gamestate:
             in not self.bet:
                 # First turn
                 player.roll()
-                betput = input(f"Stage your bet Player {self.players.index(player)}")
-                betput = convert(betput)
-                self.bet = player.bet(*betput)
+                self.bet = convert(input(f"Sage your bet {player.name}"))
                 last_player = player
 
             player.roll()
@@ -52,6 +47,11 @@ class Gamestate:
                     else:
                         break
                 self.bet = bet
+
+
+        def play(self):
+            pass
+
 
         
 
