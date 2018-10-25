@@ -2,7 +2,7 @@ from random import randint
 
 
 class Turn:
-    def __init__(self, *players):
+    def __init__(self, *players, first=False):
         self.players = players
     
     def bet(self, player, last_player):
@@ -22,10 +22,13 @@ class Turn:
 class Round:
     def __init__(self, *players):
         self.players = list(players)
+        self.turn = 0 # first turn
 
+    def is_first_turn(self):
+        return self.turn == 0
     
     def play(self):
-        print("Hey I'm playing here!")
+
 
 
 
@@ -37,16 +40,10 @@ class GameState:
         self.players = list(players)
         self.round = 0
 
-    def is_first_round(self):
-        return self.round == 0
 
     def play(self):
-        if self.is_first_round():
-            round = Round(*self.players)
-            round.play()
-            self.round += 1
-        else:
-            pass
+        round = Round(*self.players)
+
         
 
 
@@ -64,7 +61,7 @@ class Player:
         self.name = name
         self.hand = self.roll()
 
-    def alve(self):
+    def alisve(self):
         return self.dice > 0
 
     def roll(self):
